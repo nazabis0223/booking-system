@@ -3,6 +3,7 @@ import { relations, sql } from "drizzle-orm"
 import {
   date,
   integer,
+  jsonb,
   pgEnum,
   pgTable,
   primaryKey,
@@ -136,69 +137,13 @@ export const clinics = pgTable("clinics", {
 
 export const businessHours = pgTable("business_hours", {
   id: varchar("id", { length: 128 }).notNull().primaryKey(),
-  mondayStatus: operatingStatusEnum("monday_status")
-    .notNull()
-    .default("otwarte"),
-  tuesdayStatus: operatingStatusEnum("tuesday_status")
-    .notNull()
-    .default("otwarte"),
-  wednesdayStatus: operatingStatusEnum("wednesday_status")
-    .notNull()
-    .default("otwarte"),
-  thursdayStatus: operatingStatusEnum("thursday_status")
-    .notNull()
-    .default("otwarte"),
-  fridayStatus: operatingStatusEnum("friday_status")
-    .notNull()
-    .default("otwarte"),
-  saturdayStatus: operatingStatusEnum("saturday_status")
-    .notNull()
-    .default("otwarte"),
-  sundayStatus: operatingStatusEnum("sunday_status")
-    .notNull()
-    .default("otwarte"),
-  mondayOpening: varchar("monday_opening", { length: 5 })
-    .notNull()
-    .default("09:00"),
-  tuesdayOpening: varchar("tuesday_opening", { length: 5 })
-    .notNull()
-    .default("09:00"),
-  wednesdayOpening: varchar("wednesday_opening", { length: 5 })
-    .notNull()
-    .default("09:00"),
-  thursdayOpening: varchar("thursday_opening", { length: 5 })
-    .notNull()
-    .default("09:00"),
-  fridayOpening: varchar("friday_opening", { length: 5 })
-    .notNull()
-    .default("09:00"),
-  saturdayOpening: varchar("saturday_opening", { length: 5 })
-    .notNull()
-    .default("09:00"),
-  sundayOpening: varchar("sunday_opening", { length: 5 })
-    .notNull()
-    .default("09:00"),
-  mondayClosing: varchar("monday_closing", { length: 5 })
-    .notNull()
-    .default("17:00"),
-  tuesdayClosing: varchar("tuesday_closing", { length: 5 })
-    .notNull()
-    .default("17:00"),
-  wednesdayClosing: varchar("wednesday_closing", { length: 5 })
-    .notNull()
-    .default("17:00"),
-  thursdayClosing: varchar("thursday_closing", { length: 5 })
-    .notNull()
-    .default("17:00"),
-  fridayClosing: varchar("friday_closing", { length: 5 })
-    .notNull()
-    .default("17:00"),
-  saturdayClosing: varchar("saturday_closing", { length: 5 })
-    .notNull()
-    .default("17:00"),
-  sundayClosing: varchar("sunday_closing", { length: 5 })
-    .notNull()
-    .default("17:00"),
+  mondayPeriods: jsonb("monday_periods").$type<object[]>().notNull(),
+  tuesdayPeriods: jsonb("tuesday_periods").$type<object[]>().notNull(),
+  wednesdayPeriods: jsonb("wednesday_periods").$type<object[]>().notNull(),
+  thursdayPeriods: jsonb("thursday_periods").$type<object[]>().notNull(),
+  fridayPeriods: jsonb("friday_periods").$type<object[]>().notNull(),
+  saturdayPeriods: jsonb("saturday_periods").$type<object[]>().notNull(),
+  sundayPeriods: jsonb("sunday_periods").$type<object[]>().notNull(),
   createdAt: timestamp("created_at", { mode: "date" }).defaultNow().notNull(),
   updatedAt: timestamp("updated_at", { mode: "date" }).default(
     sql`current_timestamp`

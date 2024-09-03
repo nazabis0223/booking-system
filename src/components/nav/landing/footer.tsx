@@ -19,6 +19,8 @@ export async function Footer({
   const businessHours = await getBusinessHours()
   const DAYS_OF_WEEK_REARRANGED = [...DAYS_OF_WEEK.slice(1), DAYS_OF_WEEK[0]]
 
+  console.log("Business Hours: ", businessHours)
+
   return (
     <footer
       className="w-full max-w-[2560px] bg-peach bg-[url('/images/svg/team-section-background.svg')] bg-cover bg-center bg-no-repeat text-lightSectionText"

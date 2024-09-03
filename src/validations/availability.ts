@@ -5,16 +5,11 @@ export const hourSchema = z
     required_error: "Podaj godzinę otwarcia",
     invalid_type_error: "Nieprawidłowy typ danych",
   })
+  .length(5)
   .regex(/^(?:[01]\d|2[0-3]):[0-5]\d$/, {
     message: "Nieprawidłowy format godziny. Poprawny format to HH:MM",
   })
-
-export const statusSchema = z
-  .enum(["otwarte", "zamknięte"], {
-    required_error: "Wybierz status",
-    invalid_type_error: "Nieprawidłowy typ danych",
-  })
-  .default("otwarte")
+  .nullable()
 
 export const businessHoursIdSchema = z
   .string({
@@ -28,28 +23,21 @@ export const businessHoursIdSchema = z
     message: "Id może mieć maksymalnie 32 znaki",
   })
 
+export const singlePeriodSchema = z.object({
+  opening: hourSchema,
+  closing: hourSchema,
+})
+
+export const dayPeriodsSchema = z.array(singlePeriodSchema).default([])
+
 export const businessHoursSchema = z.object({
-  mondayStatus: statusSchema,
-  tuesdayStatus: statusSchema,
-  wednesdayStatus: statusSchema,
-  thursdayStatus: statusSchema,
-  fridayStatus: statusSchema,
-  saturdayStatus: statusSchema,
-  sundayStatus: statusSchema,
-  mondayOpening: hourSchema,
-  tuesdayOpening: hourSchema,
-  wednesdayOpening: hourSchema,
-  thursdayOpening: hourSchema,
-  fridayOpening: hourSchema,
-  saturdayOpening: hourSchema,
-  sundayOpening: hourSchema,
-  mondayClosing: hourSchema,
-  tuesdayClosing: hourSchema,
-  wednesdayClosing: hourSchema,
-  thursdayClosing: hourSchema,
-  fridayClosing: hourSchema,
-  saturdayClosing: hourSchema,
-  sundayClosing: hourSchema,
+  mondayPeriods: dayPeriodsSchema,
+  tuesdayPeriods: dayPeriodsSchema,
+  wednesdayPeriods: dayPeriodsSchema,
+  thursdayPeriods: dayPeriodsSchema,
+  fridayPeriods: dayPeriodsSchema,
+  saturdayPeriods: dayPeriodsSchema,
+  sundayPeriods: dayPeriodsSchema,
 })
 
 export const addBusinessHoursSchema = businessHoursSchema

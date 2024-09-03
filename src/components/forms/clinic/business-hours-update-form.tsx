@@ -2,9 +2,10 @@
 
 import * as React from "react"
 import { useRouter } from "next/navigation"
+import router from "next/router"
 import { updateBusinessHours } from "@/actions/availability"
 import { zodResolver } from "@hookform/resolvers/zod"
-import { useForm } from "react-hook-form"
+import { useFieldArray, useForm } from "react-hook-form"
 
 import { businessHours, type BusinessHours } from "@/db/schema"
 import {
@@ -13,7 +14,7 @@ import {
 } from "@/validations/availability"
 import { TIME_OPTIONS } from "@/data/constants"
 
-import { useToast } from "@/hooks/use-toast"
+import { toast, useToast } from "@/hooks/use-toast"
 
 import { Button } from "@/components/ui/button"
 import {
@@ -48,32 +49,19 @@ export function BusinessHoursUpdateForm({
   const form = useForm<UpdateBusinessHoursInput>({
     resolver: zodResolver(updateBusinessHoursSchema),
     defaultValues: {
-      mondayStatus: currentBusinessHours?.mondayStatus,
-      tuesdayStatus: currentBusinessHours?.tuesdayStatus,
-      wednesdayStatus: currentBusinessHours?.wednesdayStatus,
-      thursdayStatus: currentBusinessHours?.thursdayStatus,
-      fridayStatus: currentBusinessHours?.fridayStatus,
-      saturdayStatus: currentBusinessHours?.saturdayStatus,
-      sundayStatus: currentBusinessHours?.sundayStatus,
-      mondayOpening: currentBusinessHours?.mondayOpening,
-      tuesdayOpening: currentBusinessHours?.tuesdayOpening,
-      wednesdayOpening: currentBusinessHours?.wednesdayOpening,
-      thursdayOpening: currentBusinessHours?.thursdayOpening,
-      fridayOpening: currentBusinessHours?.fridayOpening,
-      saturdayOpening: currentBusinessHours?.saturdayOpening,
-      sundayOpening: currentBusinessHours?.sundayOpening,
-      mondayClosing: currentBusinessHours?.mondayClosing,
-      tuesdayClosing: currentBusinessHours?.tuesdayClosing,
-      wednesdayClosing: currentBusinessHours?.wednesdayClosing,
-      thursdayClosing: currentBusinessHours?.thursdayClosing,
-      fridayClosing: currentBusinessHours?.fridayClosing,
-      saturdayClosing: currentBusinessHours?.saturdayClosing,
-      sundayClosing: currentBusinessHours?.sundayClosing,
+      id: currentBusinessHours?.id || "",
+      mondayPeriods: currentBusinessHours?.mondayPeriods || [],
+      tuesdayPeriods: currentBusinessHours?.tuesdayPeriods || [],
+      wednesdayPeriods: currentBusinessHours?.wednesdayPeriods || [],
+      thursdayPeriods: currentBusinessHours?.thursdayPeriods || [],
+      fridayPeriods: currentBusinessHours?.fridayPeriods || [],
+      saturdayPeriods: currentBusinessHours?.saturdayPeriods || [],
+      sundayPeriods: currentBusinessHours?.sundayPeriods || [],
     },
   })
 
   function onSubmit(formData: UpdateBusinessHoursInput) {
-    startTransition(async () => {
+    React.startTransition(async () => {
       try {
         const message = await updateBusinessHours({
           ...formData,
