@@ -1,7 +1,7 @@
 {
-  "id": "b1a7aa3d-1a69-41a7-bed7-c0b8704fad3e",
+  "id": "069ce9ad-bd4b-4561-851e-44565cfb00b5",
   "prevId": "00000000-0000-0000-0000-000000000000",
-  "version": "6",
+  "version": "7",
   "dialect": "postgresql",
   "tables": {
     "public.accounts": {
@@ -700,6 +700,7 @@
     }
   },
   "schemas": {},
+  "sequences": {},
   "_meta": {
     "columns": {},
     "schemas": {},

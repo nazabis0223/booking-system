@@ -6,7 +6,6 @@ import { unstable_noStore as noStore } from "next/cache"
 import { getUserByEmail } from "@/actions/user"
 import { eq } from "drizzle-orm"
 
-import { env } from "@/env.mjs"
 import { db } from "@/config/db"
 import { resend } from "@/config/email"
 import { users } from "@/db/schema"
@@ -45,7 +44,7 @@ export async function resendEmailVerificationLink(
       .returning()
 
     const emailSent = await resend.emails.send({
-      from: env.RESEND_EMAIL_FROM,
+      from: process.env.RESEND_EMAIL_FROM,
       to: [validatedInput.data.email],
       subject: "Zweryfikuj swój adres email",
       react: EmailVerificationEmail({
@@ -109,8 +108,8 @@ export async function submitContactForm(
     if (!validatedInput.success) return "invalid-input"
 
     const emailToArkaSent = await resend.emails.send({
-      from: env.RESEND_EMAIL_FROM,
-      to: env.RESEND_EMAIL_TO,
+      from: process.env.RESEND_EMAIL_FROM,
+      to: process.env.RESEND_EMAIL_TO,
       subject:
         "Świetna wiadomość! Nowe zapytanie z formularza kontaktowego na stronie",
       react: EnquiryNotificationForArkaEmail({
@@ -123,8 +122,8 @@ export async function submitContactForm(
     })
 
     const emailToCustomerSent = await resend.emails.send({
-      from: env.RESEND_EMAIL_FROM,
-      to: env.RESEND_EMAIL_TO,
+      from: process.env.RESEND_EMAIL_FROM,
+      to: process.env.RESEND_EMAIL_TO,
       subject: "Dziękujemy! Otrzymaliśmy Twoje zapytanie",
       react: EnquiryNotificationForCustomerEmail({
         firstName: validatedInput.data.firstName,

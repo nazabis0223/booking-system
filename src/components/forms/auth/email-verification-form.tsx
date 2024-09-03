@@ -89,7 +89,7 @@ export function EmailVerificationForm(): JSX.Element {
   return (
     <Form {...form}>
       <form
-        className="grid gap-4 "
+        className="grid gap-4"
         onSubmit={(...args) => void form.handleSubmit(onSubmit)(...args)}
       >
         <FormField

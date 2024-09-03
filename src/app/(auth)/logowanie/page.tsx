@@ -2,7 +2,6 @@ import type { Metadata } from "next"
 import Link from "next/link"
 import { redirect } from "next/navigation"
 
-import { env } from "@/env.mjs"
 import { DEFAULT_SIGNIN_REDIRECT } from "@/config/defaults"
 
 import auth from "@/lib/auth"
@@ -19,7 +18,7 @@ import { SignInWithPasswordForm } from "@/components/forms/auth/signin-with-pass
 import { Icons } from "@/components/icons"
 
 export const metadata: Metadata = {
-  metadataBase: new URL(env.NEXT_PUBLIC_APP_URL),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL),
   title: "Logowanie",
   description: "Zaloguj się by zarządzać rezerwacjami i danymi przychodni",
 }
@@ -30,7 +29,7 @@ export default async function SignInPage(): Promise<JSX.Element> {
 
   return (
     <div className="flex h-auto min-h-screen w-full items-center justify-center">
-      <Card className="bg-background max-sm:flex  max-sm:w-full max-sm:flex-col max-sm:items-center max-sm:justify-center max-sm:rounded-none max-sm:border-none sm:min-w-[370px] sm:max-w-[368px]">
+      <Card className="bg-background max-sm:flex max-sm:w-full max-sm:flex-col max-sm:items-center max-sm:justify-center max-sm:rounded-none max-sm:border-none sm:min-w-[370px] sm:max-w-[368px]">
         <CardHeader className="space-y-1">
           <div className="flex items-center justify-between">
             <CardTitle className="text-2xl">Logowanie</CardTitle>

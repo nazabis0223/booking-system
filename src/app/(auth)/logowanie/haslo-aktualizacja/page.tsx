@@ -2,8 +2,6 @@ import type { Metadata } from "next"
 import Link from "next/link"
 import { getUserByResetPasswordToken } from "@/actions/user"
 
-import { env } from "@/env.mjs"
-
 import { cn } from "@/lib/utils"
 
 import { buttonVariants } from "@/components/ui/button"
@@ -18,7 +16,7 @@ import { PasswordUpdateForm } from "@/components/forms/auth/password-update-form
 import { Icons } from "@/components/icons"
 
 export const metadata: Metadata = {
-  metadataBase: new URL(env.NEXT_PUBLIC_APP_URL),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL),
   title: "Aktualizacja hasła",
   description: "Ustaw nowe hasło",
 }

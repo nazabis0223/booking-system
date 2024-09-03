@@ -22,22 +22,22 @@ const buttonVariants = cva(
         landingPrimary:
           "border-[3px] border-primaryButtonBorder bg-greenButtonBackground py-[4.5vw] text-[4vw] font-medium tracking-wider text-greenButtonText md:px-[4vw] md:py-[1.3vw] md:text-[1.4vw] md:hover:scale-110 w-1400:px-[56px] w-1400:py-[18px] w-1400:text-[18px]",
         landingSecondary:
-          "gap-[16px] rounded-full border-[2px] border-secondaryButtonBorder bg-peach py-[4vw] text-[4vw] font-medium tracking-wider text-greenNavbarText md:px-[4vw] md:py-[1.32vw] md:text-[1.4vw] md:hover:scale-110 w-1400:px-[56px] w-1400:py-[18px] w-1400:text-[18px]",
+          "gap-[16px] rounded-full border-2 border-secondaryButtonBorder bg-peach py-[4vw] text-[4vw] font-medium tracking-wider text-greenNavbarText md:px-[4vw] md:py-[1.32vw] md:text-[1.4vw] md:hover:scale-110 w-1400:px-[56px] w-1400:py-[18px] w-1400:text-[18px]",
         landingAppointment:
-          "from-greenNavbarBackground relative z-[2] hidden cursor-pointer rounded-full border-[3px] border-appointmentButtonBorder bg-greenButtonBackground to-greenNavbarText px-[30px] py-[10px] text-lg font-medium tracking-wide text-offWhiteText shadow-sm hover:scale-[1.1] active:shadow-none md:flex lg:text-base xl:text-[18px]",
+          "relative z-[2] hidden cursor-pointer rounded-full border-[3px] border-appointmentButtonBorder bg-greenButtonBackground from-greenButtonBackground to-greenNavbarText px-[30px] py-[10px] text-lg font-medium tracking-wide text-offWhiteText shadow-sm hover:scale-110 active:shadow-none md:flex lg:text-base xl:text-[18px]",
         landingContact:
-          "flex items-center justify-center gap-2 border-[2px] border-contactButtonBorder bg-contactButtonBackground px-6 py-2.5 font-semibold tracking-wider text-greenNavbarText shadow-sm hover:scale-110 hover:shadow-md focus:outline-none  disabled:bg-gray-400 disabled:hover:scale-100",
+          "flex items-center justify-center gap-2 border-2 border-contactButtonBorder bg-contactButtonBackground px-6 py-2.5 font-semibold tracking-wider text-greenNavbarText shadow-sm hover:scale-110 hover:shadow-md focus:outline-none disabled:bg-gray-400 disabled:hover:scale-100",
         user: "flex items-center justify-center rounded-full",
       },
       size: {
         default: "h-9 px-4 py-2",
         sm: "h-8 rounded-md px-3 text-xs",
         lg: "h-10 rounded-md px-8",
-        icon: "h-9 w-9",
-        action: "w-[70vw] rounded-full sm:w-[60vw] md:w-[auto]",
+        icon: "size-9",
+        action: "w-[70vw] rounded-full sm:w-[60vw] md:w-auto",
         datePicker: "h-10 px-3 py-2",
         contact:
-          "h-[16vw] w-[50vw] rounded-full border-[2px] px-6 py-[10px] text-[4.8vw] tracking-wider shadow-sm md:h-[6vw] md:w-[20vw] md:text-[2vw] lg:h-auto lg:w-auto lg:text-[16px]",
+          "h-[16vw] w-[50vw] rounded-full border-2 px-6 py-[10px] text-[4.8vw] tracking-wider shadow-sm md:h-[6vw] md:w-[20vw] md:text-[2vw] lg:size-auto lg:text-[16px]",
       },
     },
     defaultVariants: {

@@ -2,7 +2,6 @@ import { type Metadata } from "next"
 import { redirect } from "next/navigation"
 import { and, asc, desc, gte, inArray, like, lte, sql } from "drizzle-orm"
 
-import { env } from "@/env.mjs"
 import { db } from "@/config/db"
 import { DEFAULT_UNAUTHENTICATED_REDIRECT } from "@/config/defaults"
 import { bookings, type Booking } from "@/db/schema"
@@ -20,7 +19,7 @@ import { DateRangePicker } from "@/components/date-range-picker"
 import { BookingsTableShell } from "@/components/shells/bookings-table-shell"
 
 export const metadata: Metadata = {
-  metadataBase: new URL(env.NEXT_PUBLIC_APP_URL),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL),
   title: "Rezerwacje",
   description: "Zarządzaj swoimi rezerwacjami",
 }

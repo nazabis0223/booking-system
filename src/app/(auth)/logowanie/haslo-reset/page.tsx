@@ -1,8 +1,6 @@
 import { type Metadata } from "next"
 import Link from "next/link"
 
-import { env } from "@/env.mjs"
-
 import { buttonVariants } from "@/components/ui/button"
 import {
   Card,
@@ -14,7 +12,7 @@ import {
 import { PasswordResetForm } from "@/components/forms/auth/password-reset-form"
 
 export const metadata: Metadata = {
-  metadataBase: new URL(env.NEXT_PUBLIC_APP_URL),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL),
   title: "Resetowanie hasła",
   description: "Podaj adres email aby otrzymać link do zresetowania hasła",
 }

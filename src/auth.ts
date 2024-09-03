@@ -3,7 +3,6 @@ import { getUserById } from "@/actions/user"
 import { DrizzleAdapter } from "@auth/drizzle-adapter"
 import NextAuth from "next-auth"
 
-import { env } from "@/env.mjs"
 import authConfig from "@/config/auth"
 import { db } from "@/config/db"
 
@@ -13,12 +12,12 @@ export const {
   signIn,
   signOut,
 } = NextAuth({
-  debug: env.NODE_ENV === "development",
+  debug: process.env.NODE_ENV === "development",
   pages: {
     signIn: "/logowanie",
     signOut: "/signout",
   },
-  secret: env.AUTH_SECRET,
+  secret: process.env.AUTH_SECRET,
   session: {
     strategy: "jwt",
     maxAge: 30 * 24 * 60 * 60, // 30 days

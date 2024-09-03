@@ -15,7 +15,7 @@ export function AboutSection(): JSX.Element {
         </div>
 
         <div className="flex flex-col items-center gap-8 md:gap-6">
-          <h2 className="w-[90%] bg-gradient-to-br from-greenGradientFrom to-greenGradientTo bg-clip-text text-center font-[BalooTamma] font-bold leading-[1.05] md:text-start ">
+          <h2 className="w-[90%] bg-gradient-to-br from-greenGradientFrom to-greenGradientTo bg-clip-text text-center font-[BalooTamma] font-bold leading-[1.05] md:text-start">
             <span className="text-[12vw] text-transparent md:text-[5.8vw] w-1400:text-[80px]">
               Pasja i wiedza,{" "}
             </span>

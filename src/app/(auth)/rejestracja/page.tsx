@@ -2,7 +2,6 @@ import { type Metadata } from "next"
 import Link from "next/link"
 import { redirect } from "next/navigation"
 
-import { env } from "@/env.mjs"
 import { DEFAULT_SIGNIN_REDIRECT } from "@/config/defaults"
 
 import auth from "@/lib/auth"
@@ -19,7 +18,7 @@ import { SignUpWithPasswordForm } from "@/components/forms/auth/signup-with-pass
 import { Icons } from "@/components/icons"
 
 export const metadata: Metadata = {
-  metadataBase: new URL(env.NEXT_PUBLIC_APP_URL),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL),
   title: "Rejestracja",
   description: "Załóż konto aby korzystać z panelu administratora",
 }

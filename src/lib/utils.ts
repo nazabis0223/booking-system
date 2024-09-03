@@ -4,8 +4,6 @@ import dayjs from "dayjs"
 import { customAlphabet } from "nanoid"
 import { twMerge } from "tailwind-merge"
 
-import { env } from "@/env.mjs"
-
 export function cn(...inputs: ClassValue[]): string {
   return twMerge(clsx(inputs))
 }
@@ -69,7 +67,7 @@ export function generateTimeOptions(interval: number): string[] | null {
 }
 
 export function absoluteUrl(path: string): string {
-  return `${env.NEXT_PUBLIC_APP_URL}${path}`
+  return `${process.env.NEXT_PUBLIC_APP_URL}${path}`
 }
 
 export function handleClickSecondaryButton() {}

@@ -4,8 +4,6 @@ import { redirect } from "next/navigation"
 import { markEmailAsVerified } from "@/actions/email"
 import { getUserByEmailVerificationToken } from "@/actions/user"
 
-import { env } from "@/env.mjs"
-
 import { cn } from "@/lib/utils"
 
 import { buttonVariants } from "@/components/ui/button"
@@ -19,7 +17,7 @@ import {
 import { Icons } from "@/components/icons"
 
 export const metadata: Metadata = {
-  metadataBase: new URL(env.NEXT_PUBLIC_APP_URL),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL),
   title: "Email Verification",
   description: "Verify your email address to continue",
 }

@@ -13,7 +13,7 @@ export function ContactSection(): JSX.Element {
         className="mx-auto flex w-full max-w-[1440px] flex-col gap-[10vw] px-5 py-[48px] md:gap-[32px] md:px-6 md:py-[24px] lg:px-7"
       >
         <div className="mb-[48px] flex items-center justify-center md:grid md:grid-cols-2 md:gap-[32px] lg:gap-[48px] w-1400:mb-8">
-          <h2 className="bg-gradient-to-br from-whiteGradientFrom  to-whiteGradientTo bg-clip-text text-center font-[BalooTamma] font-bold leading-[1.05] text-transparent md:col-start-2 md:col-end-3">
+          <h2 className="bg-gradient-to-br from-whiteGradientFrom to-whiteGradientTo bg-clip-text text-center font-[BalooTamma] font-bold leading-[1.05] text-transparent md:col-start-2 md:col-end-3">
             <span className="whitespace-nowrap text-[11vw] md:text-[5.8vw] w-1400:text-[80px]">
               Pomoc i opieka
             </span>

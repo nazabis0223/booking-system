@@ -10,7 +10,6 @@ import {
   Text,
 } from "@react-email/components"
 
-import { env } from "@/env.mjs"
 import { siteConfig } from "@/config/site"
 
 interface EmailVerificationEmailProps {
@@ -47,7 +46,7 @@ export function EmailVerificationEmail({
                 adres email i dokończyć proces zakładanie konta.
               </Text>
               <Button
-                href={`${env.NEXT_PUBLIC_APP_URL}/rejestracja/potwierdz-email?token=${emailVerificationToken}`}
+                href={`${process.env.NEXT_PUBLIC_APP_URL}/rejestracja/potwierdz-email?token=${emailVerificationToken}`}
               >
                 Potwierdź adres email
               </Button>

@@ -9,7 +9,6 @@ import bcryptjs from "bcryptjs"
 import { eq } from "drizzle-orm"
 import { AuthError } from "next-auth"
 
-import { env } from "@/env.mjs"
 import { db } from "@/config/db"
 import { resend } from "@/config/email"
 import { psLinkOAuthAccount } from "@/db/prepared-statements/auth"
@@ -56,7 +55,7 @@ export async function signUpWithPassword(
       .returning()
 
     const emailSent = await resend.emails.send({
-      from: env.RESEND_EMAIL_FROM,
+      from: process.env.RESEND_EMAIL_FROM,
       to: [validatedInput.data.email],
       subject: "Verify your email address",
       react: EmailVerificationEmail({
@@ -140,7 +139,7 @@ export async function resetPassword(
       .returning()
 
     const emailSent = await resend.emails.send({
-      from: env.RESEND_EMAIL_FROM,
+      from: process.env.RESEND_EMAIL_FROM,
       to: [validatedInput.data.email],
       subject: "Resetowanie hasła",
       react: ResetPasswordEmail({

@@ -1,12 +1,10 @@
 "use client"
 
-import { env } from "@/env.mjs"
-
 export function GoogleMapWidget(): JSX.Element {
   return (
     <div className="size-full">
       <iframe
-        src={env.GOOGLE_MAPS_URL}
+        src={process.env.GOOGLE_MAPS_URL}
         width="100%"
         height="100%"
         style={{ borderRadius: "20px" }}

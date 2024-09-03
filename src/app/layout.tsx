@@ -4,7 +4,6 @@ import * as React from "react"
 import type { Metadata, Viewport } from "next"
 import { Analytics } from "@vercel/analytics/react"
 
-import { env } from "@/env.mjs"
 import { fontInter, fontJetBrainsMono } from "@/config/fonts"
 import { siteConfig } from "@/config/site"
 
@@ -27,7 +26,7 @@ export const viewport: Viewport = {
 }
 
 export const metadata: Metadata = {
-  metadataBase: new URL(env.NEXT_PUBLIC_APP_URL),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL),
   title: {
     default: siteConfig.nameLong,
     template: `%s - ${siteConfig.nameLong}`,
